@@ -1,0 +1,45 @@
+﻿<Page x:Class="Produckt.Pages.EditandAddPagexaml"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Produckt.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EditandAddPagexaml">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="248*"/>
+            <ColumnDefinition Width="287*"/>
+            <ColumnDefinition Width="265*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="188*"/>
+            <RowDefinition Height="39*"/>
+            <RowDefinition Height="41*"/>
+            <RowDefinition Height="44*"/>
+            <RowDefinition Height="39*"/>
+            <RowDefinition Height="55*"/>
+            <RowDefinition Height="32*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" >Серийный номер:</TextBlock>
+        <TextBlock Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" >Наименование:</TextBlock>
+        <TextBlock Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" >Количество:</TextBlock>
+        <TextBlock Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" >Единица измерения:</TextBlock>
+
+        <TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="100" Name="SerialNumberBox" Text="{Binding SerialNumber}"></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="100" Name="NameBox" Text="{Binding Name}"></TextBox>
+        <TextBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="100" Name="CountBox" Text="{Binding Count}" IsReadOnly="True"></TextBox>
+        <ComboBox Grid.Row="4" Grid.Column="1" Margin="5,5,5,5" x:Name="UnitCb" ></ComboBox>
+        <Border Grid.Column="1" BorderBrush="DarkBlue" BorderThickness="1.5">
+            <Image  ></Image>
+        </Border>
+        <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.ColumnSpan="3" HorizontalAlignment="Right">
+            <Button x:Name="CloseBtn" Margin="5" Click="CloseBtn_Click">Отмена</Button>
+            <Button x:Name="SaveBtn" Margin="5" Click="SaveBtn_Click">Сохранить</Button>
+        </StackPanel>
+
+
+    </Grid>
+</Page>

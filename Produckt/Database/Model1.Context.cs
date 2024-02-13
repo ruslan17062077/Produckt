@@ -15,10 +15,10 @@ namespace Produckt.Database
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class ProductInStock : DbContext
+    public partial class ProductInStock2 : DbContext
     {
-        public ProductInStock()
-            : base("name=ProductInStock")
+        public ProductInStock2()
+            : base("name=ProductInStock2")
         {
         }
     

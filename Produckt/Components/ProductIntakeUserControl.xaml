@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="Produckt.Components.ProductIntakeUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Produckt.Components"
+             mc:Ignorable="d" 
+             Height="150" Width="650">
+    <Border Margin="5" BorderBrush="DarkBlue" BorderThickness="2">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="133*"/>
+                <ColumnDefinition Width="137*"/>
+                <ColumnDefinition Width="360*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="27*"/>
+                <RowDefinition Height="30*"/>
+
+                <RowDefinition Height="24*"/>
+                <RowDefinition Height="32*"/>
+                <RowDefinition Height="30*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="1" Margin="0,0,0,27" Grid.RowSpan="2">Наименование:</TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="1" Margin="0,0,0,22" Grid.RowSpan="2">Количество:</TextBlock>
+            <TextBlock Grid.Row="3" Grid.Column="1" Margin="0,0,0,27" Grid.RowSpan="2">Сумма:</TextBlock>
+            
+            <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Product.Name}" Margin="0,0,0,27" Grid.RowSpan="2"></TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding Count}" Margin="0,0,0,22" Grid.RowSpan="2"></TextBlock>
+            <TextBlock Grid.Row="3" Grid.Column="2" Text="{Binding Summ}" Margin="0,0,0,22" Grid.RowSpan="2"></TextBlock>
+            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="4" Grid.ColumnSpan="3">
+                <Button Margin="4" x:Name="DeleteBtn" Click="DeleteBtn_Click">Удалить</Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

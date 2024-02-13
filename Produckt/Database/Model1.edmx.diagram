@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f3f44c485a7a4372a8e2f8178ac8f8fb" Name="Diagram1">
+        <EntityTypeShape EntityType="ProductInStock_ZINAModel2.Intake" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductInStock_ZINAModel2.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductInStock_ZINAModel2.ProductIntake" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductInStock_ZINAModel2.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProductInStock_ZINAModel2.Unit" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="ProductInStock_ZINAModel2.FK_ProductIntake_Intake" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductInStock_ZINAModel2.FK_Product_Unit" ManuallyRouted="false" />
+        <AssociationConnector Association="ProductInStock_ZINAModel2.FK_ProductIntake_Product" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

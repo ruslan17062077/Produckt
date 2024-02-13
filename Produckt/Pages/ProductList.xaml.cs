@@ -83,7 +83,7 @@ namespace Produckt.Pages
 
         private void PostavkaProduct_Click(object sender, RoutedEventArgs e)
         {
-            App.mainWindow.myframe.Navigate(new Pages.PostavkaPage());
+            App.mainWindow.myframe.Navigate(new Pages.PostavkaListPage());
         }
     }
 }

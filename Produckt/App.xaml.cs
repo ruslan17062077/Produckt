@@ -16,8 +16,10 @@ namespace Produckt
     /// </summary>
     public partial class App : Application
     {
-        public static ProductInStock db = new ProductInStock();
+        public static PostavkaListPage listPage;
+        public static ProductInStock2 db = new ProductInStock2();
         public static MainWindow mainWindow;
         public static ProductList productList;
+        public static List<ProductIntake> productIntakes ;
     }
 }

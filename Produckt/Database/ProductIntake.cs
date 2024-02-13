@@ -15,7 +15,7 @@ namespace Produckt.Database
     public partial class ProductIntake
     {
         public int Id { get; set; }
-        public int IntakeId { get; set; }
+        public Nullable<int> IntakeId { get; set; }
         public int SerialNumber { get; set; }
         public int Count { get; set; }
         public Nullable<int> Summa { get; set; }

@@ -29,7 +29,7 @@
         <TextBlock Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center">Итог:</TextBlock>
 
 
-        <ComboBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="190" x:Name="ProductCb" ></ComboBox>
+        <ComboBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="190" x:Name="ProductCb" SelectionChanged="ProductCb_SelectionChanged" ></ComboBox>
         <TextBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="190" x:Name="CountTb" TextChanged="CountTb_TextChanged" Text="1" ></TextBox>
         <DatePicker Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="190" x:Name="DateDp" ></DatePicker>
         <TextBlock Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="190"  x:Name="ItogTb"></TextBlock>

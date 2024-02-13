@@ -39,23 +39,16 @@ namespace Produckt.Pages
             var selProduct = ProductCb.SelectedItem as Product;
             if (add == true) 
             {
-                App.db.Intake.Add(new Intake
-                {
-                    DateIntake = DateDp.DisplayDate
-                });
-                App.db.SaveChanges();
+            
                 App.db.ProductIntake.Add(new ProductIntake
                 {
-                    IntakeId = App.db.Intake.ToList().Last().Id,
                     SerialNumber = selProduct.SerialNumber,
                     Count = Convert.ToInt32(CountTb.Text),
                     Summa = Convert.ToInt32(ItogTb.Text)
-                    
 
-                });
-                selProduct.Count += Convert.ToInt32(CountTb.Text);
+                }) ;
                 App.db.SaveChanges();
-                App.mainWindow.myframe.GoBack();
+                App.mainWindow.myframe.NavigationService.Navigate(new Pages.PostavkaListPage());
                 
             }
             else
@@ -99,6 +92,19 @@ namespace Produckt.Pages
                 add = false;
             }
            
+        }
+
+        private void ProductCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (Convert.ToInt32(CountTb.Text) > 0 && Convert.ToInt32(CountTb.Text) < 50)
+            {
+                if (ProductCb.SelectedIndex != -1)
+                {
+                    var selProduct = ProductCb.SelectedItem as Product;
+                    ItogTb.Text = (selProduct.Price * Convert.ToInt32(CountTb.Text)).ToString();
+                    add = true;
+                }
+            }
         }
     }
 }

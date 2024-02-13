@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище ProductInStock_Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище ProductInStock_ZINAModel2" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Intake">
           <Key>
             <PropertyRef Name="Id" />
@@ -29,7 +29,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IntakeId" Type="int" Nullable="false" />
+          <Property Name="IntakeId" Type="int" />
           <Property Name="SerialNumber" Type="int" Nullable="false" />
           <Property Name="Count" Type="int" Nullable="false" />
           <Property Name="Summa" Type="int" />
@@ -64,7 +64,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProductIntake_Intake">
-          <End Role="Intake" Type="Self.Intake" Multiplicity="1" />
+          <End Role="Intake" Type="Self.Intake" Multiplicity="0..1" />
           <End Role="ProductIntake" Type="Self.ProductIntake" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Intake">
@@ -118,7 +118,7 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <EntityContainer Name="Хранилище ProductInStock_ModelContainer">
+        <EntityContainer Name="Хранилище ProductInStock_ZINAModel2Container">
           <EntitySet Name="Intake" EntityType="Self.Intake" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductIntake" EntityType="Self.ProductIntake" Schema="dbo" store:Type="Tables" />
@@ -137,10 +137,11 @@
             <End Role="ProductIntake" EntitySet="ProductIntake" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ProductInStock_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="ProductInStock_ZINAModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Intake">
           <Key>
             <PropertyRef Name="Id" />
@@ -158,22 +159,22 @@
           <Property Name="MainImage" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="UnitId" Type="Int32" Nullable="false" />
           <Property Name="Count" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Unit" Relationship="Self.FK_Product_Unit" FromRole="Product" ToRole="Unit" />
-          <NavigationProperty Name="ProductIntake" Relationship="Self.FK_ProductIntake_Product" FromRole="Product" ToRole="ProductIntake" />
           <Property Name="IsDelette" Type="Boolean" />
           <Property Name="Price" Type="Int32" />
+          <NavigationProperty Name="Unit" Relationship="Self.FK_Product_Unit" FromRole="Product" ToRole="Unit" />
+          <NavigationProperty Name="ProductIntake" Relationship="Self.FK_ProductIntake_Product" FromRole="Product" ToRole="ProductIntake" />
         </EntityType>
         <EntityType Name="ProductIntake">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IntakeId" Type="Int32" Nullable="false" />
+          <Property Name="IntakeId" Type="Int32" />
           <Property Name="SerialNumber" Type="Int32" Nullable="false" />
           <Property Name="Count" Type="Int32" Nullable="false" />
+          <Property Name="Summa" Type="Int32" />
           <NavigationProperty Name="Intake" Relationship="Self.FK_ProductIntake_Intake" FromRole="ProductIntake" ToRole="Intake" />
           <NavigationProperty Name="Product" Relationship="Self.FK_ProductIntake_Product" FromRole="ProductIntake" ToRole="Product" />
-          <Property Name="Summa" Type="Int32" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -194,7 +195,7 @@
           <NavigationProperty Name="Product" Relationship="Self.FK_Product_Unit" FromRole="Unit" ToRole="Product" />
         </EntityType>
         <Association Name="FK_ProductIntake_Intake">
-          <End Role="Intake" Type="Self.Intake" Multiplicity="1" />
+          <End Role="Intake" Type="Self.Intake" Multiplicity="0..1" />
           <End Role="ProductIntake" Type="Self.ProductIntake" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Intake">
@@ -229,7 +230,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ProductInStock" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ProductInStock2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Intake" EntityType="Self.Intake" />
           <EntitySet Name="Product" EntityType="Self.Product" />
           <EntitySet Name="ProductIntake" EntityType="Self.ProductIntake" />
@@ -263,11 +264,11 @@
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ProductInStock_Model.sp_helpdiagramdefinition_Result)">
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ProductInStock_ZINAModel2.sp_helpdiagramdefinition_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ProductInStock_Model.sp_helpdiagrams_Result)">
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ProductInStock_ZINAModel2.sp_helpdiagrams_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -294,9 +295,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ProductInStock_ModelContainer" CdmEntityContainer="ProductInStock">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ProductInStock_ZINAModel2Container" CdmEntityContainer="ProductInStock2">
           <EntitySetMapping Name="Intake">
-            <EntityTypeMapping TypeName="ProductInStock_Model.Intake">
+            <EntityTypeMapping TypeName="ProductInStock_ZINAModel2.Intake">
               <MappingFragment StoreEntitySet="Intake">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="DateIntake" ColumnName="DateIntake" />
@@ -304,31 +305,31 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Product">
-            <EntityTypeMapping TypeName="ProductInStock_Model.Product">
+            <EntityTypeMapping TypeName="ProductInStock_ZINAModel2.Product">
               <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="IsDelette" ColumnName="IsDelette" />
                 <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="MainImage" ColumnName="MainImage" />
                 <ScalarProperty Name="UnitId" ColumnName="UnitId" />
                 <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="IsDelette" ColumnName="IsDelette" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductIntake">
-            <EntityTypeMapping TypeName="ProductInStock_Model.ProductIntake">
+            <EntityTypeMapping TypeName="ProductInStock_ZINAModel2.ProductIntake">
               <MappingFragment StoreEntitySet="ProductIntake">
-                <ScalarProperty Name="Summa" ColumnName="Summa" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IntakeId" ColumnName="IntakeId" />
                 <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
                 <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Summa" ColumnName="Summa" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="ProductInStock_Model.sysdiagrams">
+            <EntityTypeMapping TypeName="ProductInStock_ZINAModel2.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -339,27 +340,27 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Unit">
-            <EntityTypeMapping TypeName="ProductInStock_Model.Unit">
+            <EntityTypeMapping TypeName="ProductInStock_ZINAModel2.Unit">
               <MappingFragment StoreEntitySet="Unit">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище ProductInStock_Model.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище ProductInStock_Model.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище ProductInStock_Model.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище ProductInStock_Model.sp_helpdiagramdefinition">
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище ProductInStock_ZINAModel2.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище ProductInStock_ZINAModel2.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище ProductInStock_ZINAModel2.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище ProductInStock_ZINAModel2.sp_helpdiagramdefinition">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProductInStock_Model.sp_helpdiagramdefinition_Result">
+              <ComplexTypeMapping TypeName="ProductInStock_ZINAModel2.sp_helpdiagramdefinition_Result">
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище ProductInStock_Model.sp_helpdiagrams">
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище ProductInStock_ZINAModel2.sp_helpdiagrams">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProductInStock_Model.sp_helpdiagrams_Result">
+              <ComplexTypeMapping TypeName="ProductInStock_ZINAModel2.sp_helpdiagrams_Result">
                 <ScalarProperty Name="Database" ColumnName="Database" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -368,8 +369,8 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище ProductInStock_Model.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище ProductInStock_Model.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище ProductInStock_ZINAModel2.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище ProductInStock_ZINAModel2.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -384,7 +385,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
